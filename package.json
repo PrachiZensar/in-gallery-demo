@@ -1,6 +1,21 @@
 {
-  "name": "my-angular-app",
-  "version": "0.0.0",
+  "name": "ag-grid-angular-integration-demo",
+  "version": "1.0.0",
+  "description": "It's a 5 minute get-started guide with examples that you can copy/paste and hit the ground running. Once the basic setup is ready, I'll show you a few features and corresponding configuration options.",
+  "homepage": "https://angular.ag-grid.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular-grid/integration-demo.git"
+  },
+  "author": "Max Koretskyi <max.koretskyi@ag-grid.com>",
+  "license": "MIT",
+  "keywords": [
+    "angular-component",
+    "grid",
+    "data",
+    "table",
+    "js"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +24,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",
     "@angular/common": "^6.1.0",
@@ -20,6 +34,8 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "ag-grid": "^18.1.2",
+    "ag-grid-angular": "^18.1.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"

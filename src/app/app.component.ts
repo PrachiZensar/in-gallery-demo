@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-angular-app';
+  columnDefs = [
+    {headerName: 'Make', field: 'make'},
+    {headerName: 'Model', field: 'model'},
+    {headerName: 'Price', field: 'price', editable: true}
+  ];
+
+  rowData = [];
+
+  ngOnInit() {
+    fetch('https://api.myjson.com/bins/15psn9')
+      .then(result => result.json())
+      .then(rowData => this.rowData = rowData);
+  }
 }
