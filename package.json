@@ -7,8 +7,7 @@
     "start": "node server.js",
     "test": "ng test",
     "lint": "tslint ./src/**/*.ts -t verbose",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --aot --prod"
+    "e2e": "ng e2e"
   },
   "engines": {
     "node": "10.3.0"
