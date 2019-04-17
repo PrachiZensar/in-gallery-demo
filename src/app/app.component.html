@@ -1,10 +1,22 @@
-<ag-grid-angular
-  style="width: 500px; height: 500px;"
-  class="ag-theme-balham"
-  [enableSorting]="true"
-  [enableFilter]="true"
-  [pagination]="true"
-  [rowData]="rowData"
-  [columnDefs]="columnDefs"
->
-</ag-grid-angular>
+<table>
+  <tr>
+    <th>Client Name</th>
+    <th>Activity Name</th>
+    <th>Assigned To</th>
+    <th>Location</th>
+  </tr>
+  <tr *ngFor="let detail of details;let rowIdx = index;">
+    <td>
+    	<input type="text" id="input{{rowIdx}}-1" (focus)="onFocus(rowIdx,1)" [(ngModel)]="detail.cleint_name" maxlength="100" />
+    </td>
+    <td>
+    	<input type="text" id="input{{rowIdx}}-2" (focus)="onFocus(rowIdx,2)" [(ngModel)]="detail.activity" maxlength="100" />
+    </td>
+    <td>
+    	<input type="text" id="input{{rowIdx}}-3" (focus)="onFocus(rowIdx,3)" [(ngModel)]="detail.associate" maxlength="100" />
+    </td>
+    <td>
+    	<input type="text" id="input{{rowIdx}}-4" (focus)="onFocus(rowIdx,4)" [(ngModel)]="detail.location" maxlength="100" />
+    </td>
+  </tr>
+</table>
