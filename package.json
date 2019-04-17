@@ -1,5 +1,5 @@
 {
-  "name": "Basic editable table demo",
+  "name": "Basic_editable_table_demo",
   "version": "1.0.1",
   "scripts": {
     "ng": "ng",
@@ -7,10 +7,13 @@
     "start": "node server.js",
     "test": "ng test",
     "lint": "tslint ./src/**/*.ts -t verbose",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "e2e": "ng e2e"
+  },
+  "engines": {
+    "node": "10.3.0"
   },
   "dependencies": {
+    "express": "*",
     "@angular/animations": "^6.1.0",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
