@@ -1,22 +1,78 @@
+<!-- button to add new row -->
+<button class="add-new-row-btn" [disabled]="this.addNewFormFlag" 
+(click)="this.addNewFormFlag = true;">+</button>
+
 <table>
   <tr>
     <th>Client Name</th>
     <th>Activity Name</th>
+    <th>Time</th>
     <th>Assigned To</th>
     <th>Location</th>
   </tr>
+
+<!-- form to add new appoitment -->
+<tr *ngIf="this.addNewFormFlag">
+    <td colspan="5">
+        <form (ngSubmit)="onSubmit(aptForm)" #aptForm="ngForm">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" id="client-name"
+                           required placeholder="Client Name *" 
+                           autocomplete="off" maxlength="50" minlength="5" 
+                           name="name">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="activity-name"
+                           required placeholder="Activity Name *"
+                           autocomplete="off" maxlength="50" minlength="5" 
+                           name="activity-name">
+                    </td>
+                    <td>
+                        <input type="Time" class="form-control" id="activity-time"
+                           required placeholder="Time *" 
+                           name="activity-time">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="assigned-to"
+                           placeholder="Assigned To"
+                           autocomplete="off" maxlength="50" minlength="5" 
+                           name="assigned-to">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="location"
+                           placeholder="Location" 
+                           autocomplete="off" maxlength="6" minlength="2"
+                           name="location">
+                    </td>
+                    <td><button type="submit">Save</button>
+                </tr>
+            </table>
+        </form>
+    </td>
+</tr>
+  
   <tr *ngFor="let detail of details;let rowIdx = index;">
     <td>
-    	<input type="text" id="input{{rowIdx}}-1" (focus)="onFocus(rowIdx,1)" [(ngModel)]="detail.cleint_name" maxlength="100" />
+    	<!-- <input type="text" id="input{{rowIdx}}-1" (focus)="onFocus(rowIdx,1)" [(ngModel)]="detail.cleint_name" maxlengthlength="100" /> -->
+        {{detail.cleint_name}}
     </td>
     <td>
-    	<input type="text" id="input{{rowIdx}}-2" (focus)="onFocus(rowIdx,2)" [(ngModel)]="detail.activity" maxlength="100" />
+    	<!-- <input type="text" id="input{{rowIdx}}-2" (focus)="onFocus(rowIdx,2)" [(ngModel)]="detail.activity" maxlengthlength="100" /> -->
+        {{detail.activity}}
+    </td>
+    <td> {{detail.timeDiff}}</td>
+    <td>
+    	<!-- <input type="text" id="input{{rowIdx}}-1" (focus)="onFocus(rowIdx,1)" [(ngModel)]="detail.associate" maxlengthlength="100" /> -->
+        <ng2-completer [datasource]="associates" id="input{{rowIdx}}-1" (focus)="onFocus(rowIdx,1)" [minSearchLength]="1" clearUnselected="true" required="true" initialValue="{{detail.associate}}"></ng2-completer>
     </td>
     <td>
-    	<input type="text" id="input{{rowIdx}}-3" (focus)="onFocus(rowIdx,3)" [(ngModel)]="detail.associate" maxlength="100" />
-    </td>
-    <td>
-    	<input type="text" id="input{{rowIdx}}-4" (focus)="onFocus(rowIdx,4)" [(ngModel)]="detail.location" maxlength="100" />
+    	<input type="text" id="input{{rowIdx}}-2" (focus)="onFocus(rowIdx,2)" [(ngModel)]="detail.location" maxlengthlength="100" />
     </td>
   </tr>
 </table>
+
+<div>
+    <b>Available Associates:</b>:Jack,Lindsey,Kim,Hillary,Ryan,Priyanshu,Leo,Gloria,Prachi,Ved,Rahul,Priyanka
+</div>

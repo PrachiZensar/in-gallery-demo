@@ -8,6 +8,7 @@ td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  font-size: 13px;
 }
 
 th {
@@ -23,12 +24,26 @@ tr:nth-child(even) {
 
 input {
 	background-color: transparent;
-    border: none;
+    border: none !important;
     width: 98%;
     padding: 3px;
+  font-size: 13px;
+
 }
 
 input:focus {
 	outline: none;
 	border: 1px solid #000;
+}
+
+.add-new-row-btn {
+  float: right;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+form input {
+  border: 1px solid #000 !important;
 }

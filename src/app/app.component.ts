@@ -1,4 +1,5 @@
 import {Component,Renderer2} from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -11,87 +12,125 @@ export class AppComponent {
      "cleint_name": "Maria Anders",
      "activity": "In Gallery Appoitment",
      "associate": "Jack",
-     "location": "FLR1"
+     "timeToGo": moment().add(10, 'minutes'),
+     "location": "FLR1",
+     "timeDiff": "",
     },
     {
      "cleint_name": "Francisco Chang",
      "activity": "In Gallery Appoitment",
      "associate": "Lindsey",
-     "location": "FLR1"
+     "timeToGo": moment().add(15, 'minutes'),
+     "location": "FLR1",
+     "timeDiff": "",
     },
     {
      "cleint_name": "Roland Mendel",
      "activity": "Home Visit",
      "associate": "Kim",
-     "location": "ABC"
+     "timeToGo": moment().add(25, 'minutes'),
+     "location": "ABC",
+     "timeDiff": "",
     },
      {
      "cleint_name": "Helen Bennett",
      "activity": "Home Visit",
      "associate": "Hillary",
-     "location": "ABCD"
+     "timeToGo": moment().add(66, 'minutes'),
+     "location": "ABCD",
+     "timeDiff": "",
     },
      {
      "cleint_name": "Roland Bennett",
      "activity": "In Gallery Appoitment",
      "associate": "Ryan",
-     "location": "ABCQ"
+     "timeToGo": moment().add(90, 'minutes'),
+     "location": "ABCQ",
+     "timeDiff": "",
     },
      {
      "cleint_name": "Helen Mendel",
      "activity": "Home Visit",
      "associate": "Leo",
-     "location": "ABC"
+     "timeToGo": moment().add(120, 'minutes'),
+     "location": "ABC",
+     "timeDiff": "",
     },
      {
      "cleint_name": "Yoshi Tannamuri",
      "activity": "Home Visit",
      "associate": "Gloria",
-     "location": "ABC"
+     "timeToGo": moment().add(4, 'hours'),
+     "location": "ABC",
+     "timeDiff": "",
     },
      {
      "cleint_name": "Giovanni Rovelli",
      "activity": "In Gallery Appoitment",
-     "associate": "Kim",
-     "location": "XYZ"
+     "associate": "Prachi",
+     "timeToGo": moment().add(4, 'hours'),
+     "location": "XYZ",
+     "timeDiff": "",
     },
     {
      "cleint_name": "Maria Anders",
      "activity": "In Gallery Appoitment",
-     "associate": "Jack",
-     "location": "FLR1"
+     "associate": "Ved",
+     "timeToGo": moment().add(5, 'hours'),
+     "location": "FLR1",
+     "timeDiff": "",
     },
     {
      "cleint_name": "Francisco Chang",
      "activity": "In Gallery Appoitment",
-     "associate": "Lindsey",
-     "location": "FLR1"
+     "associate": "Priyanka",
+     "timeToGo": moment().add(5, 'hours'),
+     "location": "FLR1",
+     "timeDiff": "",
     },
     {
      "cleint_name": "Roland Mendel",
      "activity": "Home Visit",
-     "associate": "Kim",
-     "location": "ABC"
+     "associate": "Rahul",
+     "timeToGo": moment().add(6, 'hours'),
+     "location": "ABC",
+     "timeDiff": "",
     },
      {
      "cleint_name": "Helen Bennett",
      "activity": "Home Visit",
-     "associate": "Hillary",
-     "location": "ABCD"
+     "associate": "Priyanshu",
+     "timeToGo": moment().add(6, 'hours'),
+     "location": "ABCD",
+     "timeDiff": "",
     },
      {
      "cleint_name": "Roland Bennett",
      "activity": "In Gallery Appoitment",
      "associate": "Ryan",
-     "location": "ABCQ"
+     "timeToGo": moment().add(7, 'hours'),
+     "location": "ABCQ",
+     "timeDiff": "",
     },
   ];
+  associates = [];
 
   rowNo:any = 0;
   columnNo:any = 1;
+  setTimer:any;
+
+  addNewFormFlag:boolean=false;
 
   constructor(private renderer: Renderer2){}
   ngOnInit() {
+
+    
+    this.calculateTimeDiff();
+
+    this.setTimer = setInterval(() => {
+        this.calculateTimeDiff();
+    }, 1000);
+   
      // let onElement = this.renderer.selectRootElement('#input32');
      // onElement.focus();
     this.renderer.listen('document', 'keydown', (e) => {
@@ -121,11 +160,42 @@ export class AppComponent {
       }
     });
 
-    
+    //get list of arrays for autocompletion
+    this.associates = this.details.map(val => val.associate);
   }
 
   onFocus = (row,col) => {
     this.rowNo = row;
     this.columnNo = col;
+  }
+
+  calculateTimeDiff = () => {
+    // this.details.map(notif => {
+    //     let duration = moment.duration(moment(notif.timeToGo).diff()),
+    //         minsToGo = duration.asMinutes();
+
+    //     if(minsToGo < 65)
+    //         notif.timeDiff = moment(notif.timeToGo).fromNow();
+    //     else 
+    //         notif.timeDiff = moment(notif.timeToGo).format('hh:mm A');
+     
+    //     return notif;
+    // });
+  }
+
+  //display form row to add new apt
+  addNewApt = () => {
+    if(!this.addNewFormFlag)
+        this.addNewFormFlag = true;
+  }
+
+  //add new apt
+  onSubmit = (aptForm) => {
+      console.log(aptForm);
+  }
+  ngOnDestroy() {
+      if (this.setTimer) {
+        clearInterval(this.setTimer);
+      }
   }
 }
