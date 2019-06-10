@@ -65,7 +65,7 @@
     <td> {{detail.timeDiff}}</td>
     <td>
     	<!-- <input type="text" id="input{{rowIdx}}-1" (focus)="onFocus(rowIdx,1)" [(ngModel)]="detail.associate" maxlengthlength="100" /> -->
-        <ng2-completer [datasource]="associates" id="input{{rowIdx}}-1" (focus)="onFocus(rowIdx,1)" [minSearchLength]="1" clearUnselected="true" required="true" initialValue="{{detail.associate}}"></ng2-completer>
+        <ng2-completer [datasource]="associates" id="input{{rowIdx}}-1" (focus)="onFocus(rowIdx,1)" [minSearchLength]="1" required="true" initialValue="{{detail.associate}}"></ng2-completer>
     </td>
     <td>
     	<input type="text" id="input{{rowIdx}}-2" (focus)="onFocus(rowIdx,2)" [(ngModel)]="detail.location" maxlengthlength="100" />
